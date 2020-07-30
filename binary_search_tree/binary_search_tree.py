@@ -16,17 +16,47 @@ class BSTNode:
         self.right = None
 
     # Insert the given value into the tree
-    def insert(self, value):
-        pass
+    def insert(self, value): 
+        if not self.head: 
+            return False 
+
+        if value < self.head:  
+            self.head = BSTNode.insert(self.left, value)
+        elif value > self:  
+            self.right = BSTNode.insert(self.right, value) 
+ 
+        return Node
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if not self.head:
+            return False
+        
+        current = self.head
+
+        while current:
+            if current.get_value() == value:
+                return True
+            current = current.get_next()
+
+        return False
+
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if not self.head:
+            return None
+        current = self.head
+        max_val = self.head.value
+
+        while current:
+            if current.value > max_val:
+                max_val = current.value
+            current = current.next_node
+
+        return max_val
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -38,6 +68,11 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
         pass
+        # if not self:
+        #     return
+        # in_order_print(self.left)
+        # print(self.value)
+        # in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -60,10 +95,13 @@ class BSTNode:
     def post_order_dft(self):
         pass
 
+    def in_order_dft(self):
+        pass
+
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
